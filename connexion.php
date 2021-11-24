@@ -1,3 +1,4 @@
+<? session_start() ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,11 +9,11 @@
     <strong><title>moduleconnexion</title></strong>
 </head>
 
-<body>
+<body id="bodyco">
 <header>
-<?php include("include/header.php"); ?>
+
 </header>
-<main>
+<main >
 <?php
 
         try 
@@ -24,10 +25,9 @@
             {
                 die('Erreur : ' . $e->getMessage());
             }
-
+        
         @$login = htmlspecialchars($_POST['login']);
         @$password = password_hash($_POST['password'], PASSWORD_BCRYPT);   
-
 if ( isset($_POST['submit']))
 {
     
@@ -35,15 +35,12 @@ if ( isset($_POST['submit']))
     $requete = $bdd->prepare(' SELECT * FROM utilisateurs where login = :login');
     $requete->execute(['login' => $_POST['login']]);
     $result = $requete->fetch();
-
     if ( $result == true)
     {
             if  ( password_verify($_POST['password'],$result['password']) AND $_POST['password'] === 'admin' AND $_POST['login'] === 'admin') //vérification si la connection concerne le compte admin
                 { session_start();// ouverture de la session admin
                     $req = $bdd->prepare('SELECT * FROM utilisateurs  WHERE login  = :login');
-                    $req->execute(array(
-                                        'login' => $_POST['login']
-                                        ));
+                    $req->execute(array('login' => $_POST['login']));
                     $_SESSION = $req->fetch();
                     $_SESSION['login'] = $_POST['login'];
                     $_SESSION['nom'] = $result['nom'];
@@ -61,7 +58,7 @@ if ( isset($_POST['submit']))
                                 $_SESSION['login'] = $_POST['login'];
                                 $_SESSION['nom'] = $result['nom'];
                                 $_SESSION['prenom'] = $result['prenom'];
-                                header('Location: index.php');//redirection
+                                header('Location: profil.php');//redirection
                             }
                         else 
                         {
@@ -76,6 +73,7 @@ if ( isset($_POST['submit']))
     } 
 
 }
+include("include/header.php");
 ?>
 <!-- formulaire de connexion -->
 <div class="container  " id="page_centrale_connexion">
@@ -91,7 +89,11 @@ if ( isset($_POST['submit']))
                             <label for="exampleInputPassword1">Password</label>
                             <input type="password" name="password" required class="form-control" id="exampleInputPassword1">
                         </div>
-                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                        <div class="row">
+                        <button type="submit" name="submit" class="btn btn-primary">Connexion</button>
+                        <div class="ins">
+                            <p>Vous n'êtes pas encore inscrit ?</p>
+                        <a href="inscription.php" class="btn btn-primary">Inscription</a>
             </form>
     </div>
 </div>       

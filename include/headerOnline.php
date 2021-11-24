@@ -2,7 +2,7 @@
 
     <nav class="h-100 navbar navbar-expand-md navbar-dark bg-dark ">
 
-        <a class="navbar-brand h-100" href="index.php"><img src="media/logo.png"  class="h-100 img-fluid"   alt="logo">Welcome !</a>
+        <a class="navbar-brand h-100" href="index.php"><img src="images/draven.jpg" width="20%" class="h-100 img-fluid"   alt="logo">Module connexion</a>
 
         <button class=" navbar-toggler navbar-toggler-dark bg-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -21,7 +21,7 @@
                             </li>
 
                             <form class="ml-5 my-2 d-flex align-items-center" action="index.php" method="post">
-                                    <input class="btn btn-primary " name = "deco" type="submit" value="Se déconnecter">
+                                    <input class="btn btn-primary " name = "off" type="submit" value="Se déconnecter">
                             </form>
                         
                 </ul>
@@ -34,7 +34,7 @@
 
 <?php 
 // déconnexion
-    if ( isset($_POST['deco']))
+    if ( isset($_POST['off']))
 
         {
             session_destroy() ;

@@ -9,12 +9,8 @@
     <link rel="stylesheet" href="CSS/style.css" />
     <strong><title>moduleconnexion</title></strong>
 </head>
-
 <body>
-
     <main>
-
-
         <?php
 
         try {
@@ -27,7 +23,7 @@
         @$nom = htmlspecialchars($_POST['nom']);
         @$prenom = htmlspecialchars($_POST['prenom']);
 
-        // header différent selon si amdin ou un utilisateur lambda est connecté
+        // header différent si l'amdin ou un utilisateur est co
 
         if ($_SESSION['login'] == 'admin') {
             include("include/headerAdmin.php");
@@ -35,13 +31,13 @@
             include("include/headerOnline.php");
         }
 
- //récupère les données du compte pour les afficher 
+ //récupère les données du compte 
 
         $req = $bdd->prepare('SELECT * FROM utilisateurs  WHERE id  = :id');
         $req->execute(array('id' => $_SESSION['id']));
         $donnees = $req->fetch();
         ?>
-        <!-- forumailre pour changer le compte -->
+        
         <div class="container " id="page_centrale_connexion">
             <div class="row h-100  ">
                 <div class="col-12 h-100 d-flex justify-content-center align-items-center">
@@ -102,56 +98,38 @@
                     ));
                 }
             } 
-
-
-
-
             if (!$_POST['login'] == NULL) //verif  changement pour le login
-
-
             {
                 $req = $bdd->prepare('UPDATE utilisateurs SET login = :login WHERE id  = :id');
                 $req->execute(array(
                     'login' => $_POST['login'],
-                    'id' => $donnees['id']
-                ));
-
+                    'id' => $donnees['id']));
                 $_SESSION['login'] = $_POST['login'];
             }
-
-
-
             if (!$_POST['nom'] == NULL) //verif changement pour le nom
-
-
             {
                 $req = $bdd->prepare('UPDATE utilisateurs SET nom = :nom WHERE id  = :id');
                 $req->execute(array(
                     'nom' => $_POST['nom'],
-                    'id' => $donnees['id']
-                ));
-
-                $_SESSION['nom'] = $_POST['nom'];
+                    'id' => $donnees['id']));
+                
+                    $_SESSION['nom'] = $_POST['nom'];
             }
             if (!$_POST['prenom'] == NULL) //verif et changement pour le prénom
             {
                 $req = $bdd->prepare('UPDATE utilisateurs SET prenom = :prenom WHERE id  = :id');
                 $req->execute(array(
                     'prenom' => $_POST['prenom'],
-                    'id' => $donnees['id']
-                ));
+                    'id' => $donnees['id']));
 
                 $_SESSION['prenom'] = $_POST['prenom'];
             }
-            header('Location: profil.php'); //rafraichissement de la page pour remttre les valeurs affichées dans les inputs à jour
+            header('Location: profil.php'); //rafraichissement de la page pour remettre les valeurs affichées dans les inputs à jour
         }
-
 ?>
 </main>
     <footer>
         <?php include("include/footer.php"); ?>
     </footer>
-
 </body>
-
 </html>
