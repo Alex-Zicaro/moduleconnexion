@@ -12,12 +12,7 @@
 <body>
     <main>
         <?php
-
-        try {
-            $bdd = new PDO('mysql:host=localhost;dbname=alex-zicaro_moduleconnexion;charset=utf8', 'alex-zicaro', 'Lilinette83', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-        } catch (Exception $e) {
-            die('Erreur : ' . $e->getMessage());
-        }
+include_once("include/bdd.php");
 
         @$login = htmlspecialchars($_POST['login']);
         @$nom = htmlspecialchars($_POST['nom']);
@@ -74,18 +69,16 @@
             {
                 if (!$_POST['password'] == NULL and $_POST['confirm_password'] == NULL) {
                     echo ' <div class=row><div class="col-12"><p class="text-center">Vous devez confirmer votre mot de passe</p></div></div> ';
-                    include("include/footer.php");
-                    exit();
+                    
                 }
                 if ($_POST['password'] == NULL and !$_POST['confirm_password'] == NULL) {
                     echo ' <div class=row><div class="col-12"><p class="text-center">Vous n\'avez pas saisi le champs " Modifier votre password "</p></div></div> ';
-                    include("include/footer.php");
-                    exit();
+                    
                 }
                 if (!$_POST['password'] == NULL and !$_POST['confirm_password'] == NULL and  $_POST['password'] !== $_POST['confirm_password']) {
                     echo ' <div class=row><div class="col-12"><p class="text-center">Vous devez saisir deux mots de passe identiques</p></div></div> ';
-                    include("include/footer.php");
-                    exit();
+                    
+                    
                 }
                 if ($_POST['password'] === $_POST['confirm_password']) //modification du password
                 {
@@ -94,8 +87,7 @@
                     $req = $bdd->prepare('UPDATE utilisateurs SET password = :password WHERE id  = :id');
                     $req->execute(array(
                         'password' => $password,
-                        'id' => $donnees['id']
-                    ));
+                        'id' => $donnees['id']));
                 }
             } 
             if (!$_POST['login'] == NULL) //verif  changement pour le login

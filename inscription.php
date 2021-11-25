@@ -13,11 +13,8 @@
     </header>
     <main>
         <?php
-        try {
-            $bdd = new PDO('mysql:host=localhost;dbname=alex-zicaro_moduleconnexion;charset=utf8', 'alex-zicaro', 'Lilinette83', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-        } catch (Exception $e) {
-            die('Erreur : ' . $e->getMessage());
-        }
+include_once("include/bdd.php");
+
         @$login = htmlspecialchars($_POST['login']);
         @$nom = htmlspecialchars($_POST['nom']);
         @$prenom = htmlspecialchars($_POST['prenom']);
@@ -88,7 +85,7 @@
                                     <label for="confirm_password">Confirmer le Password</label>
                                     <input type="password" name="confirm_password" class="form-control form-control-lg" id="confirm_password">
                                 </div>
-                                <p>Pseudo déjà utilisé, veuillez en choisir un autre.</p>
+                                <p class="alert alert-danger alert-dismissible fade show">Login déjà utilisé, veuillez en choisir un autre.</p>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
                         </div>
@@ -136,7 +133,7 @@
                                             <label for="confirm_password">Confirmer le Password:</label>
                                             <input type="password" name="confirm_password" class="form-control form-control-lg" id="confirm_password">
                                         </div>
-                                        <p>Les mots de passe ne sont pas identiques</p>
+                                        <p class="alert alert-danger alert-dismissible fade show"><strong>Erreur!</strong>Les mots de passe ne sont pas identiques</p>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
                                 </div>
@@ -171,7 +168,7 @@
                                         <label for="confirm_password">Confirmer le Password:</label>
                                         <input type="password" name="confirm_password" class="form-control form-control-lg" id="confirm_password">
                                     </div>
-                                    <p>veuillez remplir tous les champs:</p>
+                                    <p class="alert alert-info alert-dismissible fade show">veuillez remplir tous les champs:</p>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
                             </div>

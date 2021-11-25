@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="CSS/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <strong><title>moduleconnexion</title></strong>
 </head>
 
@@ -16,15 +16,7 @@
 <main >
 <?php
 
-        try 
-            {
-                $bdd = new PDO('mysql:host=localhost;dbname=alex-zicaro_moduleconnexion;charset=utf8', 'alex-zicaro', 'Lilinette83', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-                
-            }
-        catch (Exception $e)
-            {
-                die('Erreur : ' . $e->getMessage());
-            }
+include_once("include/bdd.php");
         
         @$login = htmlspecialchars($_POST['login']);
         @$password = password_hash($_POST['password'], PASSWORD_BCRYPT);   
@@ -62,14 +54,17 @@ if ( isset($_POST['submit']))
                             }
                         else 
                         {
-                            $mauvaisidentifiants = "identifiants incorrects ";
+                            ?> <p class='alert alert-danger alert-dismissible fade show'> identifiants incorrects </p>;
+	<?php
                             
                         }
                 }
     }
     else
     {
-        $mauvaisidentifiants = "identifiants incorrects ";
+		?>
+        <p class='alert alert-danger alert-dismissible fade show'> identifiants incorrects </p> 
+	<?php
     } 
 
 }
@@ -90,10 +85,13 @@ include("include/header.php");
                             <input type="password" name="password" required class="form-control" id="exampleInputPassword1">
                         </div>
                         <div class="row">
-                        <button type="submit" name="submit" class="btn btn-primary">Connexion</button>
+                        <button type="submit" name="submit" class="btn btn-primary mt-3 ">Connexion</button>
+							<br>
                         <div class="ins">
-                            <p>Vous n'êtes pas encore inscrit ?</p>
-                        <a href="inscription.php" class="btn btn-primary">Inscription</a>
+							
+                            <p class="alert alert-info alert-dismissible fade show mt-3 rounded">Vous n'êtes pas encore inscrit ?</p>
+							
+                        <a href="inscription.php" class="btn btn-primary mb-3">Inscription</a>
             </form>
     </div>
 </div>       
