@@ -9,7 +9,7 @@
     <strong><title>moduleconnexion</title></strong>
 </head>
 
-<body id="bodyco">
+<body>
 <header>
 
 </header>
