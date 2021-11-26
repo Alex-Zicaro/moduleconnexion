@@ -27,23 +27,23 @@ include_once("include/bdd.php");
                     <div class="col-12 h-100 d-flex justify-content-center align-items-center">
                         <form class="w-50" action="inscription.php" method="post">
                             <div class="form-group form-control-lg">
-                                <label for="login">Choisissez votre pseudo</label>
+                                <label for="login">Choisissez votre Login:</label>
                                 <input type="login" name="login" class="form-control form-control-lg" id="login">
                             </div>
                             <div class="form-group form-control-lg">
-                                <label for="nom">Votre nom</label>
+                                <label for="nom">Votre nom:</label>
                                 <input type="text" name="nom" class="form-control form-control-lg" id="nom">
                             </div>
                             <div class="form-group form-control-lg">
-                                <label for="prenom">Votre prénom</label>
+                                <label for="prenom">Votre prénom:</label>
                                 <input type="text" name="prenom" class="form-control form-control-lg" id="prenom">
                             </div>
                             <div class="form-group form-control-lg">
-                                <label for="password">Password</label>
+                                <label for="password">Password:</label>
                                 <input type="password" name="password" class="form-control form-control-lg" id="password">
                             </div>
                             <div class="form-group form-control-lg">
-                                <label for="confirm_password">Confirmez le Password</label>
+                                <label for="confirm_password">Confirmez le Password:</label>
                                 <input type="password" name="confirm_password" class="form-control form-control-lg" id="confirm_password">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -66,23 +66,23 @@ include_once("include/bdd.php");
                         <div class="col-12 h-100 d-flex justify-content-center align-items-center">
                             <form class="w-50" action="inscription.php" method="post">
                                 <div class="form-group form-control-lg">
-                                    <label for="login">Choisissez votre pseudo</label>
+                                    <label for="login">Choisissez votre Login:</label>
                                     <input type="login" name="login" class="form-control form-control-lg" id="login" value="<?php if (isset($login)) {echo $login;} ?>">
                                 </div>
                                 <div class="form-group form-control-lg">
-                                    <label for="nom">Votre nom</label>
+                                    <label for="nom">Votre nom:</label>
                                     <input type="text" name="nom" class="form-control form-control-lg" id="nom" value="<?php if (isset($nom)) {echo $nom;} ?>">
                                 </div>
                                 <div class="form-group form-control-lg">
-                                    <label for="prenom">Votre prénom</label>
+                                    <label for="prenom">Votre prénom:</label>
                                     <input type="text" name="prenom" class="form-control form-control-lg" id="prenom" value="<?php if (isset($prenom)) {echo $prenom;} ?>">
                                 </div>
                                 <div class="form-group form-control-lg">
-                                    <label for="password">Password</label>
+                                    <label for="password">Password:</label>
                                     <input type="password" name="password" class="form-control form-control-lg" id="password">
                                 </div>
                                 <div class="form-group form-control-lg">
-                                    <label for="confirm_password">Confirmer le Password</label>
+                                    <label for="confirm_password">Confirmer le Password:</label>
                                     <input type="password" name="confirm_password" class="form-control form-control-lg" id="confirm_password">
                                 </div>
                                 <p class="alert alert-danger alert-dismissible fade show">Login déjà utilisé, veuillez en choisir un autre.</p>
@@ -114,7 +114,7 @@ include_once("include/bdd.php");
                                 <div class="col-12 h-100 d-flex justify-content-center align-items-center">
                                     <form class="w-50" action="inscription.php" method="post">
                                         <div class="form-group form-control-lg">
-                                            <label for="login">Choisissez votre pseudo:</label>
+                                            <label for="login">Choisissez votre Login:</label>
                                             <input type="login" name="login" class="form-control form-control-lg" id="login" value="<?php if (isset($login)) {echo $login;} ?>">
                                         </div>
                                         <div class="form-group form-control-lg">
@@ -149,7 +149,7 @@ include_once("include/bdd.php");
                             <div class="col-12 h-100 d-flex justify-content-center align-items-center">
                                 <form class="w-50" action="inscription.php" method="post">
                                     <div class="form-group form-control-lg">
-                                        <label for="login">Choisissez votre pseudo:</label>
+                                        <label for="login">Choisissez votre Login:</label>
                                         <input type="login" name="login" class="form-control form-control-lg" id="login" value="<?php if (isset($login)) echo $login;} ?>">
                                     </div>
                                     <div class="form-group form-control-lg">
